@@ -31,12 +31,12 @@ source "$HOME/.cargo/env.tcsh"  # For tcsh
 source "$HOME/.cargo/env.xsh"   # For xonsh
 
 ### Shells
-pdksh
-Fish shell
-tcsh or csh
-nushell
-pwsh
-xonsh https://xon.sh/
+>pdksh
+>Fish shell
+>tcsh or csh
+>nushell
+>pwsh
+>xonsh https://xon.sh/
 
 To use Rust with the pdksh (Public Domain Korn Shell) environment, install Rust using rustup, the official installer. Because pdksh is POSIX-compliant , 
 it requires the same initialization commands as Bash to properly set up your PATH and Cargo environment.
