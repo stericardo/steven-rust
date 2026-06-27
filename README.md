@@ -23,14 +23,14 @@ $HOME/.cargo/bin
 <br>
 To configure your current shell, you need to source
 the corresponding env file under $HOME/.cargo.
-<br>
-This is usually done by running one of the following (note the leading DOT):
-. "$HOME/.cargo/env"            # For sh/bash/zsh/ash/dash/pdksh
-source "$HOME/.cargo/env.fish"  # For fish
-source "~/.cargo/env.nu"        # For nushell
-source "$HOME/.cargo/env.tcsh"  # For tcsh
-. "$HOME/.cargo/env.ps1"        # For pwsh
-source "$HOME/.cargo/env.xsh"   # For xonsh
+<br><br>
+This is usually done by running one of the following (note the leading DOT):<br><br>
+. "$HOME/.cargo/env"            # For sh/bash/zsh/ash/dash/pdksh<br>
+source "$HOME/.cargo/env.fish"  # For fish<br>
+source "~/.cargo/env.nu"        # For nushell<br>
+source "$HOME/.cargo/env.tcsh"  # For tcsh<br>
+. "$HOME/.cargo/env.ps1"        # For pwsh<br>
+source "$HOME/.cargo/env.xsh"   # For xonsh<br>
 
 ### Shells
 >pdksh<br>
