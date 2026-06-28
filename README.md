@@ -78,6 +78,9 @@ crates.io is the Rust community’s central package registry that serves as a lo
 <br>
 To depend on a library hosted on crates.io, add it to your Cargo.toml.
 
+##RUST Naming Convention
+https://rust-lang.github.io/api-guidelines/naming.html
+
 ## Cargo Layout
 > https://doc.rust-lang.org/cargo/guide/project-layout.html
 
@@ -118,8 +121,30 @@ let nameSteven: &str = "Steven";
 println!("Hello, {}!", nameSteven); <br>
 ```
 
+### rust-clippy
+Clippy is Rust's official collection of lints and checks designed to catch common mistakes, enforce idiomatic coding styles, and improve program performance .<br> 
+It features over 550 rules covering everything from correctness and style to complexity and performance <br>
+<br>https://doc.rust-lang.org/clippy/<br>
+https://github.com/rust-lang/rust-clippy/issues/5875 <br>
+push_str with a single-character string literal <br>
+Clippy Warnings: If you use push_str with a single-character string literal (e.g., s.push_str("x")), Rust Clippy will warn you. <br>
+It will advise using s.push('x') instead, as push is faster and skips the string parsing overhead.<br>
+
 ### Constants Must Have a Type
 ```RUST
 const BIRTHYEARSTEVEN: i32 = 1980; // Ok
 const BIRTHYEARSTEVEN = 1980; // Error: missing type
 ```
+
+### Rust Ownership
+* Rust uses "ownership" to manage memory in a safe way.
+
+* Every value in Rust has an owner. The owner is usually a variable.
+
+## Ownership Rules
+
+* Each value has one owner
+* When the owner goes out of scope, the value is deleted
+* You can only have one owner at a time, unless you borrow it
+
+## Rust Borrowing
