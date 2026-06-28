@@ -1,4 +1,6 @@
 use regex::Regex;
+// Import HashMap
+use std::collections::HashMap;
 
 fn main() {
 	//const BIRTHYEAR: i32 = 1980;
@@ -217,6 +219,72 @@ fn main() {
 
 	println!("a = {}", a);  // Works
 	println!("b = {}", b);  // Works
+	
+	
+	//Borrowing and References
+	let a = String::from("Hello");
+	let b = &a; //Since b is only borrowing the value, a still owns it.	
+	println!("a = {}", a);
+	println!("b = {}", b);
+	
+	
+	//Mutable References
+	let mut name = String::from("Steven");
+	let name_ref = &mut name;
+	name_ref.push_str(" Mendez");
+
+	println!("{}", name_ref); // Steven Mendez
+	println!("{}", name); // Steven Mendez
+	
+	//Arrays
+	/*
+		An array in Rust is a fixed-size list of values, all of the same type.
+		You cannot grow or shrink an array after it's created.
+	 */ 
+	let fruits = ["apple", "banana", "orange"];
+	println!("Last fruit: {}", fruits[2]);
+	//Print the Entire Array - When printing the whole array, you must use {:?} inside println!:
+	println!("{:?}", fruits);
+	
+	//Vectors
+	//A vector is a resizable array. Unlike regular arrays, vectors can grow or shrink in size.
+	let mut fruits = vec!["apple", "banana"];
+	fruits.push("cherry");
+	println!("Last fruit: {}", fruits[2]);
+	
+	/*
+	 Tuples
+		A tuple can hold multiple values of different types. It is useful when grouping different types together.
+
+		You access tuple elements using a dot and an index number, like person.1, etc:
+	 */
+	let person = ("Steven", 40, true);
+	println!("Name: {}", person.0);
+	println!("Age: {}", person.1);
+	println!("Is active: {}", person.2);
+	
+	/*
+	HashMaps
+	A HashMap stores key-value pairs. It lets you look up a value using a key.
+
+	To use HashMap, you must import it from the standard library.
+	 */
+	 let mut capital_cities = HashMap::new();
+	  capital_cities.insert("France", "Paris");
+	  capital_cities.insert("Japan", "Tokyo");
+
+	  println!("Capital of Japan is {}", capital_cities["Japan"]);
+	  
+	//Loop Array
+	let fruits = ["apple", "banana", "orange"];
+	for fruit in fruits {
+	  println!("I like {}.", fruit);
+	}
+	//Loop Vector
+	let fruits = vec!["apple", "banana", "orange"];
+	for fruit in &fruits {
+	  println!("I like {}.", fruit);
+	}
 }
 
 fn function_steven() {

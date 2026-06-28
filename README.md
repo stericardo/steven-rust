@@ -177,3 +177,81 @@ help: consider cloning the value if the performance cost is acceptable
 - Rust uses ownership to automatically free memory when it's no longer needed
 - It prevents bugs like using memory that's already been deleted
 - It is one of the reasons Rust is so safe and fast
+
+## Borrowing and References
+Sometimes you want to use a value without taking ownership of it.
+<br>
+Rust lets you do this using a reference - this is called borrowing:
+
+## What is a Reference?
+A reference lets you look at a value without owning it. You create a reference using the & symbol:
+<br>
+```RUST
+let a = String::from("Hello");
+let b = &a;
+
+println!("a = {}", a);
+println!("b = {}", b);
+```
+
+## Why Borrowing is Important
+Borrowing helps you reuse values safely, without giving them away. <br><br>
+
+* It lets you use values without taking ownership
+* It avoids cloning, which can be slow for large data
+* It makes your programs safer and faster
+
+## Vector VS Array
+How for Loops Behave <br>
+When you run a for loop in Rust, the loop implicitly converts the collection into an iterator using the IntoIterator trait.<br>
+<br>
+The syntax you choose dictates whether you move ownership, borrow immutably, or borrow mutably.
+* 1- By Value (for item in collection) - Ownership & Copy TraitThis is where arrays and vectors diverge the most because of how they handle memory ownership:<br><br>
+ ** Vectors: <br>
+The data moves into the loop. The vector is consumed and cannot be used afterward. <br>
+ ** Arrays: If the elements implement the Copy trait (like integers), the array is implicitly copied. The original array remains perfectly usable after the loop.
+ ```RUST
+ // --- VECTORS ---
+let v = vec![1, 2, 3];
+for x in v { 
+    println!("{x}"); // x is i32 (owned value)
+}
+// println!("{:?}", v); // ❌ COMPILE ERROR: v has been moved!
+
+// --- ARRAYS ---
+let a = [1, 2, 3];
+for x in a { 
+    println!("{x}"); // x is i32 (copied value)
+}
+println!("{:?}", a); //  VALID: a is still accessible because of Copy trait
+ ```
+ 
+* 2- By Immutable Reference (for item in &collection)<br>
+This is the most common pattern. It borrows the elements without taking ownership, leaving both arrays and vectors fully reusable after the loop ends.
+ ```RUST
+let v = vec![1, 2, 3];
+let a = [1, 2, 3];
+
+for x in &v {
+    println!("{x}"); // x is &i32 (reference)
+}
+
+for x in &a {
+    println!("{x}"); // x is &i32 (reference)
+}
+// Both 'v' and 'a' can be freely used here
+ ```
+* 3- By Mutable Reference (for item in &mut collection) <br>
+Use this syntax when you need to modify the elements inside the collection in-place.
+ ```RUST
+let mut v = vec![1, 2, 3];
+let mut a = [1, 2, 3];
+
+for x in &mut v {
+    *x *= 2; // Dereference to modify the underlying heap value
+}
+
+for x in &mut a {
+    *x *= 2; // Dereference to modify the underlying stack value
+}
+ ```
