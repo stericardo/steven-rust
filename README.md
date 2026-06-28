@@ -110,3 +110,16 @@ The f64 type is used to store numbers containing one or more decimals <br>
 let dollarValue: f64 = 19.99; <br>
 println!("dollarValue is: ${}", dollarValue); <br>
 ```
+
+### String (&str)
+
+```RUST
+let nameSteven: &str = "Steven";
+println!("Hello, {}!", nameSteven); <br>
+```
+
+### Constants Must Have a Type
+```RUST
+const BIRTHYEARSTEVEN: i32 = 1980; // Ok
+const BIRTHYEARSTEVEN = 1980; // Error: missing type
+```
