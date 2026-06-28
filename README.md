@@ -94,4 +94,19 @@ warning: unused variable: `my_text2` <br>
   3-Configuration:<br> toml[lints.rust] <br>
 unused_variables = "allow"<br>
 
+## NUMBERS
+Number types are divided into two groups: integer types and floating point types.
 
+### Integer (i32)
+```RUST
+The i32 type is used to store whole numbers, positive or negative without decimals: <br>
+let ageSteven: i32 = 40; <br>
+println!("Steven Age is: {}", age); <br>
+```
+
+### Floating Point (f64)
+The f64 type is used to store numbers containing one or more decimals <br>
+```RUST
+let dollarValue: f64 = 19.99; <br>
+println!("dollarValue is: ${}", dollarValue); <br>
+```
