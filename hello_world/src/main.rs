@@ -177,6 +177,14 @@ fn main() {
 	println!("{}", result);
 	println!("Length: {}", result.len()); 
 	
+	// Basic Ownership Example
+	let a = String::from("Hello");
+	let b = a;
+
+	// println!("{}", a); Error: a no longer owns the value
+	println!("{}", b); // Ok: b now owns the value
+	println!("{}", a); 
+	
 }
 
 fn function_steven() {

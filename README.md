@@ -148,3 +148,28 @@ const BIRTHYEARSTEVEN = 1980; // Error: missing type
 * You can only have one owner at a time, unless you borrow it
 
 ## Rust Borrowing
+For example lets analyze this code:
+```RUST
+	// println!("{}", a); Error: a no longer owns the value
+	println!("{}", b); // Ok: b now owns the value
+	println!("{}", a); 
+	
+	cargo build:
+	
+	error[E0382]: borrow of moved value: `a`
+   --> src/main.rs:186:17
+    |
+181 |     let a = String::from("Hello");
+    |         - move occurs because `a` has type `String`, which does not implement the `Copy` trait
+182 |     let b = a;
+    |             - value moved here
+...
+186 |     println!("{}", a); 
+    |                    ^ value borrowed here after move
+    |
+help: consider cloning the value if the performance cost is acceptable
+    |
+182 |     let b = a.clone();
+    |              ++++++++
+
+```
