@@ -183,8 +183,40 @@ fn main() {
 
 	// println!("{}", a); Error: a no longer owns the value
 	println!("{}", b); // Ok: b now owns the value
-	println!("{}", a); 
+	// When we assign a to b, the ownership moves. This means only b can use the value now, because a is no longer valid.
+	//println!("{}", a);  WILL PRODOCE ERROR 
+	/*
+	 * error[E0382]: borrow of moved value: `a`
+	 * --> src/main.rs:186:17
+     * |
+	 *	181 |     let a = String::from("Hello");
+	 *		|         - move occurs because `a` has type `String`, which does not implement the `Copy` trait
+	 *	182 |     let b = a;
+	 *		|             - value moved here
+	 *	...
+	 *	186 |     println!("{}", a); 
+	 *		|                    ^ value borrowed here after move
+	 *		|
+	 *	help: consider cloning the value if the performance cost is acceptable
+	 *		|
+	 *	182 |     let b = a.clone();
+	 *		|              ++++++++
+	 */ 
+	// But simple types like numbers, characters and booleans are copied, not moved.
+	// This means you can still use the original variable after assigning it to another:
+	let a = 5;
+	let b = a;
+	println!("a = {}", a);  // Works
+	println!("b = {}", b);  // Works
 	
+	//Clone
+	//For other types, like String, if you really want to keep the original value and also assign it to another variable, 
+	//you can use the .clone() method, which makes a copy of the data:
+	let a = String::from("Hello");
+	let b = a.clone(); // Now both have the same value
+
+	println!("a = {}", a);  // Works
+	println!("b = {}", b);  // Works
 }
 
 fn function_steven() {

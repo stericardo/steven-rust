@@ -173,3 +173,7 @@ help: consider cloning the value if the performance cost is acceptable
     |              ++++++++
 
 ```
+## Why Ownership Matters
+- Rust uses ownership to automatically free memory when it's no longer needed
+- It prevents bugs like using memory that's already been deleted
+- It is one of the reasons Rust is so safe and fast
