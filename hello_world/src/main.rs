@@ -276,16 +276,88 @@ fn main() {
 	  println!("Capital of Japan is {}", capital_cities["Japan"]);
 	  
 	//Loop Array
+	/*
+	 1. By Value (for item in collection) - Ownership & Copy Trait
+	 */
 	let fruits = ["apple", "banana", "orange"];
 	for fruit in fruits {
 	  println!("I like {}.", fruit);
 	}
 	//Loop Vector
+	/*
+	 By Immutable Reference (for item in &collection)This is the most common pattern. 
+	 It borrows the elements without taking ownership, leaving both arrays and vectors fully reusable after the loop ends.
+	 */
 	let fruits = vec!["apple", "banana", "orange"];
 	for fruit in &fruits {
 	  println!("I like {}.", fruit);
 	}
+	
+	let person = ("Jenny", 45, false);
+	let (name, age, active) = person;
+	println!("Name: {}", name);
+	println!("Age: {}", age);
+	println!("Active: {}", active);
+	
+	let user = get_user();
+	println!("User From tuple Function: {} ({} years old)", user.0, user.1);
+	
+	let mut capital_cities = HashMap::new();
+
+	capital_cities.insert("England", "London");
+	capital_cities.insert("Germany", "Berlin");
+	capital_cities.insert("Norway", "Oslo");
+
+/*
+ * Because Rust lacks a traditional null value to prevent common runtime crashes, it uses the Option<T> enum to 
+ * safely handle the presence or absence of data. You can use Some directly anywhere in your code because it is automatically imported by Rust's default environment prelude
+ * 
+ * enum Option<T> {
+    Some(T), // Contains a value of type T
+    None,    // Contains no value
 }
+ * 
+ */
+	if let Some(city) = capital_cities.get("England") {
+	  println!("The capital of England is {}.", city);
+	} else {
+	  println!("England is not in the map.");
+	}
+	
+	if let Some(city) = capital_cities.get("Spain") {
+	  println!("The capital of England is {}.", city);
+	} else {
+	  println!("Spain is not in the map.");
+	}
+	
+	let mut capital_cities = HashMap::new();
+
+	// Add keys and values (Country, City)
+	capital_cities.insert("England", "London");
+	capital_cities.insert("Germany", "Berlin");
+	capital_cities.insert("Norway", "Oslo");
+
+	// Loop through the HashMap
+	for (country, city) in &capital_cities {
+	  println!("The capital of {} is {}.", country, city);
+	}
+	
+	capital_cities.insert("Norways", "Steven");
+	// Loop through the HashMap
+	for (country, city) in &capital_cities {
+	  println!("The capital of {} is {}.", country, city);
+	}
+
+	
+	
+	
+}
+
+// Tuple Function
+fn get_user() -> (String, i32) {
+  (String::from("Steven Mendez"), 40)
+}
+
 
 fn function_steven() {
 	let cont_loop = 2;

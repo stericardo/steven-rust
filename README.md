@@ -1,5 +1,9 @@
 # >  RUST
 
+#Building Running Compiling
+
+![screenshot](assets/hw.png)
+
 ## Dev code
 /Users/stevenmendez/development/code/steven/rust
 
@@ -255,3 +259,14 @@ for x in &mut a {
     *x *= 2; // Dereference to modify the underlying stack value
 }
  ```
+
+##Some
+Because Rust lacks a traditional null value to prevent common runtime crashes, it uses the Option<T> enum to safely handle the presence or absence of data.<br>
+ You can use Some directly anywhere in your code because it is automatically imported by Rust's default environment prelude <br>
+ 
+  ```RUST
+  enum Option<T> {
+    Some(T), // Contains a value of type T
+    None,    // Contains no value
+}
+   ```
