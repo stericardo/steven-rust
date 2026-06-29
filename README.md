@@ -1,6 +1,6 @@
 # >  RUST
 
-#Building Running Compiling
+## Building Running Compiling
 
 ![screenshot](assets/hw.png)
 
