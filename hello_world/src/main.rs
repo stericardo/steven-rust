@@ -1,6 +1,9 @@
 use regex::Regex;
 // Import HashMap
 use std::collections::HashMap;
+use std::fmt;
+
+
 
 fn main() {
 	//const BIRTHYEAR: i32 = 1980;
@@ -348,9 +351,66 @@ fn main() {
 	  println!("The capital of {} is {}.", country, city);
 	}
 
+	// Create a Person object
+	let user = Person {
+	  name: String::from("Steven"),
+	  age: 40,
+	  can_vote: true,
+	};
+
+	// Access and print the values
+	println!("Name: {}", user.name);
+	println!("Age: {}", user.age);
+	println!("Can vote? {}", user.can_vote);
+	
+	let mut user = Person {
+	  name: String::from("Steven"),
+	  age: 40,
+	  can_vote: true,
+	};
+
+	user.age = 36; // Change value of age
+	println!("Name: {}", user.name);
+	println!("Updated age: {}", user.age);
 	
 	
+	let my_direction = Direction::Up;
+	//IF YOU DO NOT PRINT or use let again you will receive ^^^^^^^^^^^^ help: if this is intentional, prefix it with an underscore: `_my_direction`
+	println!("We are going RIGHT! {}" , my_direction);
+	//warning: variants `Down`, `Left`, and `Right` are never constructed if you do not use the rest of enum values
+	let my_direction = Direction::Down;
+	println!("We are going RIGHT! {}" , my_direction);
+	let my_direction = Direction::Left;
+	println!("We are going RIGHT! {}" , my_direction);
+	let my_direction = Direction::Right;
+	println!("We are going RIGHT! {}" , my_direction);
 	
+	
+}
+
+enum Direction {
+  Up,
+  Down,
+  Left,
+  Right,
+}
+
+impl fmt::Display for Direction {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        match self {
+            Direction::Up => write!(f, "The account is UP"),
+            Direction::Down => write!(f, "The account is DOWN"),
+            Direction::Left => write!(f, "The account is LEFT"),
+            Direction::Right => write!(f, "The account is RIGHT"),
+        }
+    }
+}
+
+
+struct Person {
+  name: String,
+  age: u32,
+  can_vote: bool,
 }
 
 // Tuple Function
