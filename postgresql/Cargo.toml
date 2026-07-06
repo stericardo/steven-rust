@@ -1,0 +1,9 @@
+[package]
+name = "postresql-connection"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+time = "0.1.12"
+regex = "0.1.41"
+postgres = "0.19"
